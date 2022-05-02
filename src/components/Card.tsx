@@ -8,7 +8,7 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = ({ children, title, footer, isLoading }) => {
 	return (
-		<div className="flex flex-col items-center p-2 rounded-md outline-blue-500 outline">
+		<div className="flex flex-col items-center rounded-md outline-blue-500 outline">
 			{isLoading ? (
 				<div>
 					<i className="fa-solid fa-spinner animate-spin"></i> Loading
@@ -16,7 +16,7 @@ const Card: React.FC<CardProps> = ({ children, title, footer, isLoading }) => {
 			) : (
 				<>
 					{title ? <CardTitle>{title}</CardTitle> : null}
-					{children}
+					{<div className="px-2 py-1">{children}</div>}
 					{footer ? <CardFooter>{footer}</CardFooter> : null}
 				</>
 			)}
@@ -25,12 +25,14 @@ const Card: React.FC<CardProps> = ({ children, title, footer, isLoading }) => {
 }
 
 const CardTitle: React.FC = ({ children }) => {
-	return <h3 className="font-bold text-lg">{children}</h3>
+	return <h3 className="font-bold text-lg pt-2">{children}</h3>
 }
 
 const CardFooter: React.FC = ({ children }) => {
 	return (
-		<div className="flex justify-center w-full border-t-2 border-blue-500 mt-4">{children}</div>
+		<div className="flex justify-center w-full border-t-2 border-blue-500 mt-4 py-2">
+			{children}
+		</div>
 	)
 }
 
