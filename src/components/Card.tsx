@@ -8,18 +8,22 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = ({ children, title, footer, isLoading }) => {
 	return (
-		<div className="flex flex-col items-center rounded-md outline-blue-500 outline">
-			{isLoading ? (
-				<div>
-					<i className="fa-solid fa-spinner animate-spin"></i> Loading
-				</div>
-			) : (
-				<>
-					{title ? <CardTitle>{title}</CardTitle> : null}
-					{<div className="px-2 py-1">{children}</div>}
-					{footer ? <CardFooter>{footer}</CardFooter> : null}
-				</>
-			)}
+		<div className="flex flex-col w-96 max-w-sm items-center rounded-md outline-blue-500 outline">
+			<>
+				{title ? <CardTitle>{title}</CardTitle> : null}
+				{
+					<div className="px-2 py-1">
+						{isLoading ? (
+							<div>
+								<i className="fa-solid fa-spinner animate-spin"></i> Loading
+							</div>
+						) : (
+							children
+						)}
+					</div>
+				}
+				{footer ? <CardFooter>{footer}</CardFooter> : null}
+			</>
 		</div>
 	)
 }
