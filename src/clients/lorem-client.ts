@@ -1,7 +1,7 @@
 import faker from '@faker-js/faker'
 
 const getLorem = async () => {
-	await new Promise((resolve) => setTimeout(resolve, Math.random() * 2))
+	await new Promise((r) => setTimeout(r, Math.random() * 2000))
 	return faker.lorem.paragraph()
 }
 
