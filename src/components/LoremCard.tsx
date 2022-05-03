@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { loremClient } from '../clients/lorem-client'
 import { Button } from './Button'
@@ -8,11 +8,22 @@ const LoremCard = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false)
 	const [phrase, setPhrase] = useState<string>('')
 
-	const handleOnClick = async () => {
+	useEffect(() => {
+		const fetch = async () => {
+			await fetchNewPhrase()
+		}
+		fetch()
+	}, [])
+
+	const fetchNewPhrase = async () => {
 		setIsLoading(true)
 		const newPhrase = await loremClient.getLorem()
 		setPhrase(newPhrase)
 		setIsLoading(false)
+	}
+
+	const handleOnClick = async () => {
+		await fetchNewPhrase()
 	}
 
 	return (
@@ -21,7 +32,7 @@ const LoremCard = () => {
 			title="Title"
 			footer={<Button onClick={handleOnClick}>click me</Button>}
 		>
-			{phrase}
+			<div className="text-justify">{phrase}</div>
 		</Card>
 	)
 }
