@@ -30,7 +30,7 @@ const LoremCard = () => {
 		<Card
 			isLoading={isLoading}
 			title="Title"
-			footer={<Button onClick={handleOnClick}>click me</Button>}
+			footer={<Button onClick={handleOnClick}>New phrase!</Button>}
 		>
 			<div className="text-justify">{phrase}</div>
 		</Card>
