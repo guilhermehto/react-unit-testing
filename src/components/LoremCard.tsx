@@ -4,7 +4,11 @@ import { loremClient } from '../clients/lorem-client'
 import { Button } from './Button'
 import { Card } from './Card'
 
-const LoremCard = () => {
+type LoremCardProps = {
+	fetchPhrase?: () => Promise<string>
+}
+
+const LoremCard: React.FC<LoremCardProps> = ({ fetchPhrase }) => {
 	const [isLoading, setIsLoading] = useState<boolean>(false)
 	const [phrase, setPhrase] = useState<string>('')
 
@@ -17,7 +21,7 @@ const LoremCard = () => {
 
 	const fetchNewPhrase = async () => {
 		setIsLoading(true)
-		const newPhrase = await loremClient.getLorem()
+		const newPhrase = fetchPhrase ? await fetchPhrase() : await loremClient.getLorem()
 		setPhrase(newPhrase)
 		setIsLoading(false)
 	}
