@@ -13,7 +13,7 @@ const Card: React.FC<CardProps> = ({ children, title, footer, isLoading }) => {
 			className="flex-col w-96 max-w-sm items-center rounded-md outline-blue-500 outline"
 		>
 			<>
-				{title ? <CardTitle>{title}</CardTitle> : null}
+				{title ? <CardTitle>{''}</CardTitle> : null}
 				{
 					<div className="px-2 py-1">
 						{isLoading ? (
