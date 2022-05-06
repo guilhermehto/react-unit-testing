@@ -8,7 +8,10 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = ({ children, title, footer, isLoading }) => {
 	return (
-		<div className="flex flex-col w-96 max-w-sm items-center rounded-md outline-blue-500 outline">
+		<div
+			style={{ display: 'flex' }}
+			className="flex-col w-96 max-w-sm items-center rounded-md outline-blue-500 outline"
+		>
 			<>
 				{title ? <CardTitle>{title}</CardTitle> : null}
 				{
