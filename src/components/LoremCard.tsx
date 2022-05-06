@@ -22,7 +22,6 @@ const LoremCard: React.FC<LoremCardProps> = ({ fetchPhrase }) => {
 	const fetchNewPhrase = async () => {
 		setIsLoading(true)
 		const newPhrase = fetchPhrase ? await fetchPhrase() : await loremClient.getLorem()
-		setPhrase(newPhrase)
 		setIsLoading(false)
 	}
 
